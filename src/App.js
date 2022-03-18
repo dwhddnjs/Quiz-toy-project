@@ -1,6 +1,7 @@
 import "./App.css";
 import Counter from "./Counter";
 import useStore from "./store";
+import Mp from "./Mp";
 
 function App() {
   const { count } = useStore();
@@ -13,6 +14,7 @@ function App() {
       <Counter />
       <button onClick={increase}>click me</button>
       <button onClick={decrease}>click me</button>
+      <Mp />
     </div>
   );
 }
