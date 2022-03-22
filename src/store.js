@@ -1,6 +1,8 @@
 import create from "zustand";
 
 const useStore = create((set) => ({
+  result: "",
+  setResult: (e) => set(() => ({ result: e.target.value })),
   data: [
     {
       id: 1,

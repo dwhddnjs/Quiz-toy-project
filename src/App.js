@@ -1,14 +1,19 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Quiz from "./Quiz";
+import { useRef, useState } from "react";
+import useStore from "./store";
 
 function App() {
+  const { result } = useStore();
+  const setResult = useStore((state) => state.setResult);
+
   return (
     <ContainerDiv>
       <ContentDiv>
         <h2>똑척퀴즈</h2>
         <Quiz />
         <AnswerDiv>
-          <input type="text" />
+          <input type="text" onChange={setResult} />
           <button>정답</button>
         </AnswerDiv>
       </ContentDiv>

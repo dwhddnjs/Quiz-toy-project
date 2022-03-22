@@ -1,15 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import useStore from "./store";
 
 function Quiz() {
+  const { data } = useStore();
+  const { result } = useStore();
+  console.log("dsadsasad", result);
+
+  // const showQuiz = (result) => {
+  //   data.forEach(() => {
+  //     if (el.answer == result) {
+  //       el;
+  //     }
+  //   });
+  // };
+
   return (
     <QuestionDiv>
       <h3>문제 1번</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum iure
-        labore tempora sapiente commodi cum libero eos ducimus. Ullam, velit
-        placeat nam consequuntur ratione quaerat dolorem error magni odit fugit!
-      </p>
+      {data && data.map((el) => <p>{el.quiz}</p>)}
     </QuestionDiv>
   );
 }
