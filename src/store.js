@@ -55,6 +55,15 @@ const useStore = create((set) => ({
       answer: "마부정제",
     },
   ],
+  answerHandler: () =>
+    set((state) => ({
+      data: [...state.data].slice(1, state.data.length),
+    })),
+
+  resetInput: () =>
+    set((state) => ({
+      result: "",
+    })),
 }));
 
 export default useStore;

@@ -5,17 +5,13 @@ import useStore from "./store";
 
 function App() {
   const { result } = useStore();
-  const setResult = useStore((state) => state.setResult);
 
   return (
     <ContainerDiv>
       <ContentDiv>
         <h2>똑척퀴즈</h2>
         <Quiz />
-        <AnswerDiv>
-          <input type="text" onChange={setResult} />
-          <button>정답</button>
-        </AnswerDiv>
+        
       </ContentDiv>
     </ContainerDiv>
   );
@@ -60,38 +56,3 @@ const ContentDiv = styled.div`
   }
 `;
 
-const AnswerDiv = styled.div`
-  margin: 10px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* padding: 0 40px 0 40px; */
-  input {
-    width: 450px;
-    height: 120px;
-    border: none;
-    border-bottom: 6px solid #39b48e;
-    margin-right: 30px;
-    font-size: 80px;
-    text-align: center;
-    letter-spacing: 15px;
-    padding-top: 5px;
-    font-weight: 800;
-    color: #000;
-    outline: none;
-    background: #d7fadb;
-  }
-
-  button {
-    width: 170px;
-    height: 140px;
-    border-radius: 50%;
-    border: none;
-    background: #ff6347;
-    color: #ffff00;
-    font-weight: 700;
-    font-size: 35px;
-    box-shadow: #ff9000 0 10px 0;
-    cursor: pointer;
-  }
-`;
