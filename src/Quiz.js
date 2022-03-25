@@ -7,24 +7,22 @@ function Quiz() {
   const { result } = useStore();
   const answerHandler = useStore((state) => state.answerHandler);
   const setResult = useStore((state) => state.setResult);
-  const resetInput = useStore((state) => state.resetInput);
 
-  const jiji = (result) => {
+  const compareAnswer = (result) => {
     if (data[0].answer === result) {
       answerHandler();
-      resetInput();
     }
-    console.log("수정데이터", data);
-    console.log("내용", result);
   };
+
+  console.log("input", result);
 
   return (
     <QuestionDiv>
       <h3>문제 1번</h3>
       <p>{data[0].quiz}</p>
       <AnswerDiv>
-        <input type="text" onChange={setResult} />
-        <button onClick={() => jiji(result)}>정답</button>
+        <input type="text" onChange={setResult} value={result} />
+        <button onClick={() => compareAnswer(result)}>정답</button>
       </AnswerDiv>
     </QuestionDiv>
   );

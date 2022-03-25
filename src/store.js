@@ -1,8 +1,8 @@
 import create from "zustand";
 
 const useStore = create((set) => ({
-  result: "",
-  setResult: (e) => set(() => ({ result: e.target.value })),
+  result: null,
+  setResult: (e) => set((state) => ({ result: e.target.value })),
   data: [
     {
       id: 1,
@@ -58,11 +58,7 @@ const useStore = create((set) => ({
   answerHandler: () =>
     set((state) => ({
       data: [...state.data].slice(1, state.data.length),
-    })),
-
-  resetInput: () =>
-    set((state) => ({
-      result: (state.result = ""),
+      result: "",
     })),
 }));
 
