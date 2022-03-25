@@ -62,7 +62,7 @@ const useStore = create((set) => ({
 
   resetInput: () =>
     set((state) => ({
-      result: "",
+      result: (state.result = ""),
     })),
 }));
 
