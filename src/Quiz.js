@@ -1,30 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import useStore from "./store";
+import Clear from "./Clear";
 
 function Quiz() {
   const { data } = useStore();
   const { result } = useStore();
   const answerHandler = useStore((state) => state.answerHandler);
   const setResult = useStore((state) => state.setResult);
+  const resetInput = useStore((state) => state.resetInput);
+  const InputFocus = useRef();
 
   const compareAnswer = (result) => {
     if (data[0].answer === result) {
       answerHandler();
+      InputFocus.current.focus();
+    } else {
+      alert("다시 생각해보자");
+      resetInput();
+      InputFocus.current.focus();
     }
   };
 
-  console.log("input", result);
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      compareAnswer(result);
+    }
+  };
+
+  console.log(data);
 
   return (
-    <QuestionDiv>
-      <h3>문제 1번</h3>
-      <p>{data[0].quiz}</p>
-      <AnswerDiv>
-        <input type="text" onChange={setResult} value={result} />
-        <button onClick={() => compareAnswer(result)}>정답</button>
-      </AnswerDiv>
-    </QuestionDiv>
+    <>
+      {data.length === 0 ? (
+        <>
+          <QuestionDiv>
+            <h3>문제 1번</h3>
+            <p>{data[0].quiz}</p>
+            <AnswerDiv>
+              <input
+                type="text"
+                onChange={setResult}
+                value={result}
+                ref={InputFocus}
+                onKeyPress={onKeyPress}
+              />
+              <button onClick={() => compareAnswer(result)}>정답</button>
+            </AnswerDiv>
+          </QuestionDiv>
+        </>
+      ) : (
+        <Clear />
+      )}
+    </>
   );
 }
 

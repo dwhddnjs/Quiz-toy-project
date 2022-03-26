@@ -2,7 +2,7 @@ import create from "zustand";
 
 const useStore = create((set) => ({
   result: null,
-  setResult: (e) => set((state) => ({ result: e.target.value })),
+
   data: [
     {
       id: 1,
@@ -55,9 +55,17 @@ const useStore = create((set) => ({
       answer: "마부정제",
     },
   ],
+
   answerHandler: () =>
     set((state) => ({
       data: [...state.data].slice(1, state.data.length),
+      result: "",
+    })),
+
+  setResult: (e) => set((state) => ({ result: e.target.value })),
+
+  resetInput: () =>
+    set((state) => ({
       result: "",
     })),
 }));
