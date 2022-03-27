@@ -2,18 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 function Clear() {
+  const goMain = () => {
+    window.location.replace("/");
+  };
+
   return (
     <ResultDiv>
       <h3>100점</h3>
       <p>
-        사자성어를 많이 아는 당신은 입이 박학다식 하군요. <br />매 대화에
-        사자성어를 섞어 똑똑한 척을 하는 당신은 입이 청산유수일 가능성이
-        높습니다 <br />
-        하지만 다른사람 입장에서는 당신의 말이 이해 못할수 있으므로 허세 적당히
-        부리고 그만 섞어 쓰세요
+        사자성어를 많이 아는 당신은 입이 박학다식 하군요. <br />
+        매 대화에 사자성어를 섞어 똑똑한 척을 하는 당신 <br />
+        주둥이가 청산유수일 가능성이 높습니다. <br />
+        하지만 다른사람 입장에서 당신의 말이 이해 못할수 있으므로 <br />
+        허세 적당히 부리고 그만 섞어 쓰세요.
       </p>
       <pre>"이해하기 쉽게 말하는 사람이 진정한 언변의 마술사입니다"</pre>
-      <button>다시하기</button>
+      <button onClick={goMain}>다시하기</button>
     </ResultDiv>
   );
 }
@@ -25,7 +29,7 @@ const ResultDiv = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid;
+
   height: 100%;
   padding: 0 40px 0 40px;
   h3 {

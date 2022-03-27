@@ -28,27 +28,23 @@ function Quiz() {
     }
   };
 
-  console.log(data);
-
   return (
     <>
-      {data.length === 0 ? (
-        <>
-          <QuestionDiv>
-            <h3>문제 1번</h3>
-            <p>{data[0].quiz}</p>
-            <AnswerDiv>
-              <input
-                type="text"
-                onChange={setResult}
-                value={result}
-                ref={InputFocus}
-                onKeyPress={onKeyPress}
-              />
-              <button onClick={() => compareAnswer(result)}>정답</button>
-            </AnswerDiv>
-          </QuestionDiv>
-        </>
+      {data.length !== 0 ? (
+        <QuestionDiv>
+          <h3>문제 {data[0].id}번</h3>
+          <p>{data[0].quiz}</p>
+          <AnswerDiv>
+            <input
+              type="text"
+              onChange={setResult}
+              value={result}
+              ref={InputFocus}
+              onKeyPress={onKeyPress}
+            />
+            <button onClick={() => compareAnswer(result)}>정답</button>
+          </AnswerDiv>
+        </QuestionDiv>
       ) : (
         <Clear />
       )}
@@ -59,9 +55,7 @@ function Quiz() {
 export default Quiz;
 
 const QuestionDiv = styled.div`
-  /* border: 1px solid; */
   margin: 80px 0 45px 0;
-  /* padding: 80px 0; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,7 +82,7 @@ const AnswerDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 0 40px 0 40px; */
+  margin-top: 40px;
   input {
     width: 450px;
     height: 120px;
